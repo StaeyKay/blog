@@ -1,36 +1,68 @@
 const K = {
     NAVLINKS: [
         {
-            name: "Home",
+            name: "HOME",
             path: "/"
         },
         {
-            name: "Categories",
+            name: "CATEGORIES",
             path: "/categories"
         },
         {
-            name: "Politics",
+            name: "POLITICS",
             path: "/politics"
         }, 
         {
-            name: "Business",
+            name: "BUSINESS",
             path: "/business"
         },
         {
-            name: "Health",
+            name: "HEALTH",
             path: "/health"
         },
         {
-            name: "Design",
+            name: "DESIGN",
             path: "/design"
         },
         {
-            name: "Sport",
+            name: "SPORT",
             path: "/sport"
         },
         {
-            name: "Contact",
+            name: "CONTACT",
             path: "/contact"
+        }
+    ],
+
+
+    ARTICLES: [
+        {
+            title: "News Needs to Meet Its Audiences Where They Are",
+            author: "Dave Rogers",
+            category: "News",
+            date: "Jun 14",
+            readTime: "3 min",
+        },
+        {
+            title: "News Needs to Meet Its Audiences Where They Are",
+            author: "Dave Rogers",
+            category: "News",
+            date: "Jun 14",
+            readTime: "3 min",
+        },
+        {
+            title: "News Needs to Meet Its Audiences Where They Are",
+            author: "Dave Rogers",
+            category: "News",
+            date: "Jun 14",
+            readTime: "3 min",
+        },
+        {
+            title: "News Needs to Meet Its Audiences Where They Are",
+            author: "Dave Rogers",
+            category: "News",
+            date: "Jun 14",
+            readTime: "3 min",
         }
     ]
 }
