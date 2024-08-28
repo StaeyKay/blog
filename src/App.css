@@ -1,3 +1,6 @@
 body {
     padding: 0 128px;
 }
+div.no-padding {
+    padding: 0 !important; /* !important to override the global padding */
+}
