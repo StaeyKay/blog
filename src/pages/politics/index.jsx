@@ -1,10 +1,10 @@
 import React from 'react'
-import PoliticsCategory from './components/politics'
+import PoliticsPage from './components/politics'
 
 const Politics = () => {
   return (
     <div className='space-y-10 px-[128px]'>
-      <PoliticsCategory/>
+      <PoliticsPage/>
     </div>
   )
 }

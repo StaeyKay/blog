@@ -1,10 +1,10 @@
 import React from 'react'
-import DesignCategory from './components/design'
+import DesignPage from './components/design'
 
 const Design = () => {
   return (
     <div className='space-y-10 px-[128px]'>
-      <DesignCategory/>
+      <DesignPage/>
     </div>
   )
 }

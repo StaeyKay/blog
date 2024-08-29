@@ -1,6 +1,7 @@
 import React from 'react';
 import SubHeader from './subHeader';
-import { FaSearch } from "react-icons/fa";
+import { FaTelegramPlane } from "react-icons/fa";
+
 
 const Footer = () => {
   return (
@@ -23,7 +24,7 @@ const Footer = () => {
           />
         </form>
         <button className='bg-black h-12 w-12 rounded-full flex items-center justify-center'>
-          <FaSearch className='text-white' />
+          <FaTelegramPlane className='text-white' />
         </button>
       </div>
     </div>

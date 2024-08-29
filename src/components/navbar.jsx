@@ -37,6 +37,9 @@ const Navbar = () => {
         )
         }
       </div>
+      <div>
+        <hr className='text-gray-400 px-0'/>
+      </div>
     </div>
   )
 }
