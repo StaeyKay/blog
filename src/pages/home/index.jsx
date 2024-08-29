@@ -7,7 +7,7 @@ import RecentNews from './components/recentNews'
 
 const Home = () => {
   return (
-    <div className='space-y-10'>
+    <div className='space-y-10 px-[128px]'>
       <Hero />
       <Trending />
       <Hero/>

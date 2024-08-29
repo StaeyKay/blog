@@ -1,8 +1,11 @@
 import React from 'react'
+import BusinessCategory from './components/business'
 
 const Business = () => {
   return (
-    <div>Business</div>
+    <div className='space-y-10 px-[128px]'>
+      <BusinessCategory/>
+    </div>
   )
 }
 

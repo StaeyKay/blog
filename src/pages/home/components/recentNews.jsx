@@ -8,7 +8,7 @@ const RecentNews = ({ image }) => {
             <div className='space-y-5 md:w-[75%]'>
                 <SubHeader title="Recent News" />
                 <div className="flex bg-white overflow-hidden">
-                    <div className="p-4 w-2/3 flex flex-1 flex-col justify-between">
+                    <div className="py-4 w-2/3 flex flex-1 flex-col justify-between">
                         <div>
                             <h3 className="text-gray-900">
                                 News Needs to Meet Its Audiences Where They Are
@@ -36,7 +36,7 @@ const RecentNews = ({ image }) => {
                     </div>
                 </div>
                 <div className="flex bg-white overflow-hidden">
-                    <div className="p-4 w-2/3 flex flex-1 flex-col justify-between">
+                    <div className="py-4 w-2/3 flex flex-1 flex-col justify-between">
                         <div>
                             <h3 className="text-gray-900">
                                 News Needs to Meet Its Audiences Where They Are
@@ -64,7 +64,7 @@ const RecentNews = ({ image }) => {
                     </div>
                 </div>
                 <div className="flex bg-white overflow-hidden">
-                    <div className="p-4 w-2/3 flex flex-1 flex-col justify-between">
+                    <div className="py-4 w-2/3 flex flex-1 flex-col justify-between">
                         <div>
                             <h3 className="text-gray-900">
                                 News Needs to Meet Its Audiences Where They Are

@@ -8,6 +8,7 @@ import Categories from "./pages/categories"
 import Health from "./pages/health"
 import Design from "./pages/design"
 import Contact from "./pages/contact"
+import Sport from "./pages/sport"
 
 function App() {
 
@@ -39,6 +40,10 @@ function App() {
         {
           path: "/design",
           element: <Design/>
+        },
+        {
+          path: "/sport",
+          element: <Sport/>
         },
         {
           path: "/contact",

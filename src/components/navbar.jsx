@@ -9,14 +9,14 @@ import K from "../constants"
 
 const Navbar = () => {
   return (
-    <div className='py-10 space-y-10'>
+    <div className='py-10 space-y-10 px-[128px]'>
       <div className='flex justify-between items-center'>
         <span className='font-semibold text-[25px]'>Meranda</span>
         <div className='flex justify-between items-center space-x-5'>
           <div className='flex space-x-3'>
             <FaFacebookF className='text-lg' />
-            <FaTwitter className='text-lg'/>
-            <IoLogoInstagram className='text-lg'/>
+            <FaTwitter className='text-lg' />
+            <IoLogoInstagram className='text-lg' />
           </div>
 
           <div className='flex space-x-2'>
@@ -24,7 +24,7 @@ const Navbar = () => {
               <input type="text" className='shadow-md border-none rounded-full px-4 py-1 outline-none' placeholder='Search...' />
             </form>
             <div className='bg-black p-3 rounded-full'>
-            <FaSearch className='text-white'/>
+              <FaSearch className='text-white' />
             </div>
           </div>
         </div>

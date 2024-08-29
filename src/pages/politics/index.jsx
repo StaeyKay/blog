@@ -1,8 +1,11 @@
 import React from 'react'
+import PoliticsCategory from './components/politics'
 
 const Politics = () => {
   return (
-    <div>Politics</div>
+    <div className='space-y-10 px-[128px]'>
+      <PoliticsCategory/>
+    </div>
   )
 }
 
