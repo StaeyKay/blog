@@ -1,3 +1,5 @@
+import { LayoutDashboard } from "lucide-react";
+
 const K = {
     NAVLINKS: [
         {
@@ -31,6 +33,22 @@ const K = {
         {
             name: "CONTACT",
             path: "/contact"
+        }
+    ],
+
+    DASHBOARDLINKS: [
+        {   
+            icon: <LayoutDashboard/>,
+            name: "OVERVIEW",
+            path: "/dashboard"
+        },
+        {
+            name: "BLOGS",
+            path: "/dashboard/blogs"
+        },
+        {
+            name: "PROFILE",
+            path: "/dashboard/profile"
         }
     ],
 

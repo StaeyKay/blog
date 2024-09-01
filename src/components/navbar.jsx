@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
@@ -8,6 +8,8 @@ import K from "../constants"
 
 
 const Navbar = () => {
+  const navigate = useNavigate()
+
   return (
     <div className='py-10 space-y-10 px-[128px]'>
       <div className='flex justify-between items-center'>
@@ -37,6 +39,12 @@ const Navbar = () => {
         )
         }
       </div>
+      <button
+       onClick={() => navigate("/dashboard")}
+       className='bg-gray-400 rounded-lg px-10 py-4 text-black'>
+        Click me!
+      </button>
+      <Link to="/dashboard" className='bg-gray-400 rounded-lg px-10 py-4 text-black'>Click me</Link>
       <div>
         <hr className='text-gray-400 px-0'/>
       </div>

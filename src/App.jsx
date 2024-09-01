@@ -9,10 +9,19 @@ import Health from "./pages/health"
 import Design from "./pages/design"
 import Contact from "./pages/contact"
 import Sport from "./pages/sport"
+import LandingPage from "./pages/landing"
+import DashboardLayout from "./pages/dasboard/layout/dashboardLayout"
+import Profile from "./pages/dasboard/pages/profile"
+import Overview from "./pages/dasboard/pages/overview"
+import Blog from "./pages/dasboard/pages/blog"
 
 function App() {
 
   const router = createBrowserRouter([
+    // {
+    //   index: true,
+    //   element: <LandingPage/>
+    // },
     {
       path: "/",
       element: <RootLayout/>,
@@ -30,24 +39,42 @@ function App() {
           element: <Politics/>
         },
         {
-          path: "/business",
+          path: "business",
           element: <Business/>
         },
         {
-          path: "/health",
+          path: "health",
           element: <Health/>
         },
         {
-          path: "/design",
+          path: "design",
           element: <Design/>
         },
         {
-          path: "/sport",
+          path: "sport",
           element: <Sport/>
         },
         {
-          path: "/contact",
+          path: "contact",
           element: <Contact/>
+        }
+      ]
+    },
+    {
+      path: "dashboard",
+      element: <DashboardLayout/>,
+      children: [
+        {
+          index: true,
+          element: <Overview/>
+        },
+        {
+          path: "profile",
+          element: <Profile/>
+        },
+        {
+          path: "blogs",
+          element: <Blog/>
         }
       ]
     }
