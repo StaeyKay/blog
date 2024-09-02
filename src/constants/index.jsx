@@ -1,4 +1,4 @@
-import { LayoutDashboard } from "lucide-react";
+import { ChartColumnStacked, LayoutDashboard, Logs, UserPen } from "lucide-react";
 
 const K = {
     NAVLINKS: [
@@ -43,10 +43,17 @@ const K = {
             path: "/dashboard"
         },
         {
+            icon: <Logs/>,
             name: "BLOGS",
             path: "/dashboard/blogs"
         },
         {
+            icon: <ChartColumnStacked/>,
+            name: "CATEGORIES",
+            path: "/dashboard/categories"
+        },
+        {
+            icon: <UserPen/>,
             name: "PROFILE",
             path: "/dashboard/profile"
         }
