@@ -4,8 +4,8 @@ import K from "../constants";
 
 const Sidebar = () => {
   return (
-    <div className="bg-[#1a1a1a] min-h-screen w-64 text-white font-bold p-10">
-      <div>Logo div</div>
+    <div className="bg-[#1a1a1a] min-h-screen w-64 text-white font-bold p-10 space-y-4 flex flex-col gap-8">
+      <div className="text-3xl text-center">Logo</div>
       <div className="flex flex-col gap-5 text-[#33bbff]">
         {K.DASHBOARDLINKS.map((item, index) => (
           <NavLink to={item.path} key={index}>

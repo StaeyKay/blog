@@ -15,7 +15,6 @@ import Profile from "./pages/dasboard/pages/profile"
 import Overview from "./pages/dasboard/pages/overview"
 import Blog from "./pages/dasboard/pages/blog"
 import DashboardCategories from "./pages/dasboard/pages/dashboardCategories"
-import AddBlog from "./pages/dasboard/pages/addBlog"
 
 function App() {
 
@@ -81,10 +80,6 @@ function App() {
         {
           path: "categories",
           element: <DashboardCategories/>
-        },
-        {
-          path: "blogs/addBlog",
-          element: <AddBlog/>
         }
       ]
     }
