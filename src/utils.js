@@ -19,10 +19,12 @@ export async function saveArticle(article) {
     body: article,
     headers: {
       authorization:
-        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGI4Y2VlOGJiM2M3NzA3OTRkMmM4YiIsImlhdCI6MTcyNTgyNzk0NSwiZXhwIjoxNzI1ODM4NzQ1fQ.46BMpckFNeUk_7Rz-f256W3HC2ZcRip8QtaeONnxTXU",
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGI4Y2VlOGJiM2M3NzA3OTRkMmM4YiIsImlhdCI6MTcyNTg5MjYxNiwiZXhwIjoxNzI1OTAzNDE2fQ.ogUvBYB3K1jJZ7QTFeXm0onFUqccBzUSWKuihk9oWcY",
     },
   });
 
   const response = await createArticleResponse.json();
   return response;
 }
+
+export async function getArticles(article) {}

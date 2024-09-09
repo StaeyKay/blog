@@ -1,55 +1,75 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom';
-import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import { FaFacebookF, FaTwitter, FaSearch, FaBars } from "react-icons/fa";
 import { IoLogoInstagram } from "react-icons/io";
-import { FaSearch } from "react-icons/fa";
-import K from "../constants"
-
+import K from "../constants";
 
 const Navbar = () => {
-  const navigate = useNavigate()
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <div className='py-10 space-y-10 px-[128px]'>
-      <div className='flex justify-between items-center'>
-        <span className='font-semibold text-[25px]'>Meranda</span>
-        <div className='flex justify-between items-center space-x-5'>
-          <div className='flex space-x-3'>
-            <FaFacebookF className='text-lg' />
-            <FaTwitter className='text-lg' />
-            <IoLogoInstagram className='text-lg' />
+    <div className="py-5 px-6 md:px-10 lg:px-[128px]">
+      <div className="flex justify-between items-center">
+        {/* Logo */}
+        <span className="font-semibold text-[25px]">Meranda</span>
+
+        <div className="flex items-center space-x-5">
+          {/* Social Icons and Search */}
+          <div className="flex space-x-3">
+            <FaFacebookF className="text-lg" />
+            <FaTwitter className="text-lg" />
+            <IoLogoInstagram className="text-lg" />
           </div>
 
-          <div className='flex space-x-2'>
+          {/* Search Input */}
+          <div className="flex space-x-2">
             <form action="">
-              <input type="text" className='shadow-md border-none rounded-full px-4 py-1 outline-none' placeholder='Search...' />
+              <input
+                type="text"
+                className="shadow-md border-none rounded-full px-4 py-1 outline-none w-full md:w-auto"
+                placeholder="Search..."
+              />
             </form>
-            <div className='bg-black p-3 rounded-full'>
-              <FaSearch className='text-white' />
+            <div className="bg-black p-3 rounded-full">
+              <FaSearch className="text-white" />
             </div>
+          </div>
+
+          {/* Hamburger Menu Icon for Mobile */}
+          <div className="md:hidden">
+            <FaBars
+              className="text-2xl cursor-pointer"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            />
           </div>
         </div>
       </div>
-      <div className="flex gap-x-10">
-        {K.NAVLINKS.map(
-          (item, index) => {
-            return <Link key={index} to={item.path}>{item.name}</Link>
-          }
-        )
-        }
+
+      {/* Nav Links for larger screens */}
+      <div className="hidden md:flex justify-end space-x-5 mt-5">
+        {K.NAVLINKS.map((item, index) => (
+          <Link key={index} to={item.path}>
+            {item.name}
+          </Link>
+        ))}
       </div>
-      <button
-       onClick={() => navigate("/dashboard")}
-       className='bg-gray-400 rounded-lg px-10 py-4 text-black'>
-        Click me!
-      </button>
-      <Link to="/dashboard" className='bg-gray-400 rounded-lg px-10 py-4 text-black'>Click me</Link>
+
+      {/* Mobile Menu (dropdown) */}
+      {isMenuOpen && (
+        <div className="md:hidden flex flex-col space-y-3 mt-5">
+          {K.NAVLINKS.map((item, index) => (
+            <Link key={index} to={item.path}>
+              {item.name}
+            </Link>
+          ))}
+        </div>
+      )}
+
       <div>
-        <hr className='text-gray-400 px-0'/>
+        <hr className="text-gray-400 mt-5" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
