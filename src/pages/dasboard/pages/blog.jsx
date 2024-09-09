@@ -1,6 +1,6 @@
 import { FilePenLine, Plus, Trash, X } from "lucide-react";
 import React, { useState } from "react";
-import { getDatabase, saveData } from "../../../utils";
+import { saveArticle } from "../../../utils";
 
 const Blog = () => {
   const [showForm, setShowForm] = useState(false);
@@ -10,9 +10,7 @@ const Blog = () => {
   const [category, setCategory] = useState("");
   const [date, setDate] = useState("");
   const [readTime, setReadTime] = useState("");
-  const [file, setFile] = useState("");
-
-  console.log(title);
+  const [file, setFile] = useState(null);
 
   const toggleForm = () => {
     setShowForm(!showForm);
@@ -28,22 +26,24 @@ const Blog = () => {
     setFile("");
   };
 
-  const blogpostList = getDatabase();
-
-  const saveBlogPost = (e) => {
+  const saveBlogPost = async (e) => {
     e.preventDefault();
-    const blogpost = {
-      title,
-      content,
-      author,
-      category,
-      date,
-      readTime,
-      file,
-    };
-    blogpostList.unshift(blogpost);
-    saveData(blogpostList);
-    resetForm();
+
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("content", content);
+      formData.append("author", author);
+      formData.append("category", category);
+      formData.append("date", date);
+      formData.append("readTime", readTime);
+      formData.append("image", file);
+
+      const article = await saveArticle(formData);
+      resetForm();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -152,9 +152,8 @@ const Blog = () => {
                   name="myfile"
                   className="bg-white shadow-md border-none rounded-lg px-4 py-2 outline-none text-black"
                   onChange={(e) => {
-                    setFile(URL.createObjectURL(e.target.files[0]));
+                    setFile(e.target.files[0]);
                   }}
-                  value={file}
                 />
                 <button
                   type="submit"
@@ -169,15 +168,22 @@ const Blog = () => {
         )}
 
         <div className="space-y-5 w-full">
-          {blogpostList.map((blogpost) => (
-            <div key={blogpost.title} className="bg-[#36454F] rounded-md text-white p-6 flex justify-between">
+          {[].map((blogpost) => (
+            <div
+              key={blogpost.title}
+              className="bg-[#36454F] rounded-md text-white p-6 flex justify-between"
+            >
               <div>
                 <h3>{blogpost.title}</h3>
                 <p className="mt-2 line-clamp-3 text-sm/relaxed">
                   {blogpost.content}
                 </p>
-                <p className="text-sm mt-2">{blogpost.author} in {blogpost.category}</p>
-                <p className="text-sm mt-1">{blogpost.date} • {blogpost.readTime} read</p>
+                <p className="text-sm mt-2">
+                  {blogpost.author} in {blogpost.category}
+                </p>
+                <p className="text-sm mt-1">
+                  {blogpost.date} • {blogpost.readTime} read
+                </p>
               </div>
               <div className="flex gap-2">
                 <FilePenLine size={30} />
