@@ -1,6 +1,6 @@
 import { FilePenLine, Plus, Trash, X } from "lucide-react";
-import React, { useState } from "react";
-import { saveArticle } from "../../../utils";
+import React, { useState, useEffect } from "react";
+import { getArticles, saveArticle } from "../../../utils";
 
 const Blog = () => {
   const [showForm, setShowForm] = useState(false);
@@ -11,6 +11,7 @@ const Blog = () => {
   const [date, setDate] = useState("");
   const [readTime, setReadTime] = useState("");
   const [file, setFile] = useState(null);
+  const [articleList, setArticleList] = useState([]);
 
   const toggleForm = () => {
     setShowForm(!showForm);
@@ -45,6 +46,17 @@ const Blog = () => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    // getArticles().then((articleList) => {
+    //   setArticleList(articleList);
+    // });
+    const fetchArticles = async () => {
+      const articleList = await getArticles();
+      setArticleList(articleList);
+    };
+    fetchArticles();
+  }, []);
 
   return (
     <div className="p-10 w-full">
@@ -168,9 +180,10 @@ const Blog = () => {
         )}
 
         <div className="space-y-5 w-full">
-          {[].map((blogpost) => (
+          {articleList.length === 0 && <h3>No articles found</h3>}
+          {articleList.map((blogpost) => (
             <div
-              key={blogpost.title}
+              key={blogpost.id}
               className="bg-[#36454F] rounded-md text-white p-6 flex justify-between"
             >
               <div>

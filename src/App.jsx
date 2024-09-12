@@ -1,23 +1,25 @@
-import { RouterProvider, createBrowserRouter } from "react-router-dom"
-import "./App.css"
-import RootLayout from "./layout/rootLayout"
-import Home from "./pages/home"
-import Politics from "./pages/politics"
-import Business from "./pages/business"
-import Categories from "./pages/categories"
-import Health from "./pages/health"
-import Design from "./pages/design"
-import Contact from "./pages/contact"
-import Sport from "./pages/sport"
-import LandingPage from "./pages/landing"
-import DashboardLayout from "./pages/dasboard/layout/dashboardLayout"
-import Profile from "./pages/dasboard/pages/profile"
-import Overview from "./pages/dasboard/pages/overview"
-import Blog from "./pages/dasboard/pages/blog"
-import DashboardCategories from "./pages/dasboard/pages/dashboardCategories"
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import "./App.css";
+import RootLayout from "./layout/rootLayout";
+import Home from "./pages/home";
+import Politics from "./pages/politics";
+import Business from "./pages/business";
+import Categories from "./pages/categories";
+import Health from "./pages/health";
+import Design from "./pages/design";
+import Contact from "./pages/contact";
+import Sport from "./pages/sport";
+import LandingPage from "./pages/landing";
+import DashboardLayout from "./pages/dasboard/layout/dashboardLayout";
+import Profile from "./pages/dasboard/pages/profile";
+import Overview from "./pages/dasboard/pages/overview";
+import Blog from "./pages/dasboard/pages/blog";
+import DashboardCategories from "./pages/dasboard/pages/dashboardCategories";
+import AuthLayout from "./pages/auth/layout/authLayout";
+import Signup from "./pages/auth/signup";
+import Login from "./pages/auth/login";
 
 function App() {
-
   const router = createBrowserRouter([
     // {
     //   index: true,
@@ -25,67 +27,80 @@ function App() {
     // },
     {
       path: "/",
-      element: <RootLayout/>,
+      element: <RootLayout />,
       children: [
         {
           index: true,
-          element: <Home/>
+          element: <Home />,
         },
         {
           path: "categories",
-          element: <Categories />
+          element: <Categories />,
         },
         {
           path: "politics",
-          element: <Politics/>
+          element: <Politics />,
         },
         {
           path: "business",
-          element: <Business/>
+          element: <Business />,
         },
         {
           path: "health",
-          element: <Health/>
+          element: <Health />,
         },
         {
           path: "design",
-          element: <Design/>
+          element: <Design />,
         },
         {
           path: "sport",
-          element: <Sport/>
+          element: <Sport />,
         },
         {
           path: "contact",
-          element: <Contact/>
-        }
-      ]
+          element: <Contact />,
+        },
+      ],
     },
     {
       path: "dashboard",
-      element: <DashboardLayout/>,
+      element: <DashboardLayout />,
       children: [
         {
           index: true,
-          element: <Overview/>
+          element: <Overview />,
         },
         {
           path: "profile",
-          element: <Profile/>
+          element: <Profile />,
         },
         {
           path: "blogs",
-          element: <Blog/>
+          element: <Blog />,
         },
         {
           path: "categories",
-          element: <DashboardCategories/>
-        }
-      ]
-    }
-  ])
-  return ( <RouterProvider router={router} />
-  )
+          element: <DashboardCategories />,
+        },
+      ],
+    },
+    {
+      path: "auth",
+      element: <AuthLayout />,
+      children: [
+        {
+          path: "signup",
+          element: <Signup />,
+        },
+        {
+          path: "login",
+          element: <Login />,
+        },
+      ],
+    },
+  ]);
+  return <RouterProvider router={router} />;
 }
 
-export default App
+export default App;
