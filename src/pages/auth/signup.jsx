@@ -1,17 +1,48 @@
 import React, { useState } from "react";
-import SubHeader from "../../components/subHeader";
 import { Eye, EyeOff } from "lucide-react";
+import { saveUser } from "../../utils";
 
 const Signup = () => {
   const [passwordVisibility, setPasswordVisibility] = useState(false);
+  const [name, setName] = useState("");
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handlePasswordVisibility = () => {
     setPasswordVisibility(!passwordVisibility);
   };
 
+  const resetForm = () => {
+    setName("");
+    setUsername("");
+    setEmail("");
+    setPassword("");
+  };
+
+  const saveSignup = async (e) => {
+    e.preventDefault();
+
+    try {
+      const newUser = {
+        name: name,
+        username: username,
+        email: email,
+        password: password,
+      };
+      console.log(name);
+      console.log(username);
+
+      const user = await saveUser(newUser);
+      resetForm();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="bg-[#F8F9FA] px-[128px] min-h-screen flex items-center justify-center">
-      <form action="" className="space-y-6 items-center w-[400px]">
+      <form onSubmit={saveSignup} className="space-y-6 items-center w-[400px]">
         <div className="flex flex-col space-y-6">
           <div>
             <label
@@ -22,8 +53,13 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              id="firstName"
+              id="name"
               className="shadow-md border-none rounded-xl px-4 py-3 outline-none w-full"
+              onChange={(e) => {
+                setName(e.target.value);
+              }}
+              value={name}
+              required
             />
           </div>
           <div>
@@ -37,6 +73,11 @@ const Signup = () => {
               type="text"
               id="lastName"
               className="shadow-md border-none rounded-xl px-4 py-3 outline-none w-full"
+              onChange={(e) => {
+                setUsername(e.target.value);
+              }}
+              value={username}
+              required
             />
           </div>
           <div>
@@ -50,6 +91,11 @@ const Signup = () => {
               type="email"
               id="email"
               className="shadow-md border-none rounded-xl px-4 py-3 outline-none w-full"
+              onChange={(e) => {
+                setEmail(e.target.value);
+              }}
+              value={email}
+              required
             />
           </div>
           <div className="relative">
@@ -63,6 +109,11 @@ const Signup = () => {
               type={passwordVisibility ? "text" : "password"}
               id="password"
               className="shadow-md border-none rounded-xl px-4 py-3 outline-none w-full"
+              onChange={(e) => {
+                setPassword(e.target.value);
+              }}
+              required
+              value={password}
             />
             {/* Toggle Eye Icon */}
             <div
