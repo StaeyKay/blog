@@ -17,7 +17,7 @@ import Blog from "./pages/dasboard/pages/blog";
 import DashboardCategories from "./pages/dasboard/pages/dashboardCategories";
 import AuthLayout from "./pages/auth/layout/authLayout";
 import Signup from "./pages/auth/signup";
-import Login from "./pages/auth/login";
+import Signin from "./pages/auth/signin";
 
 function App() {
   const router = createBrowserRouter([
@@ -64,7 +64,7 @@ function App() {
       ],
     },
     {
-      path: "dashboard",
+      path: "dashboard/:userId",
       element: <DashboardLayout />,
       children: [
         {
@@ -95,7 +95,7 @@ function App() {
         },
         {
           path: "login",
-          element: <Login />,
+          element: <Signin />,
         },
       ],
     },

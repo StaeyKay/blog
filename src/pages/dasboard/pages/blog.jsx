@@ -181,29 +181,31 @@ const Blog = () => {
 
         <div className="space-y-5 w-full">
           {articleList.length === 0 && <h3>No articles found</h3>}
-          {articleList.map((blogpost) => (
-            <div
-              key={blogpost.id}
-              className="bg-[#36454F] rounded-md text-white p-6 flex justify-between"
-            >
-              <div>
-                <h3>{blogpost.title}</h3>
-                <p className="mt-2 line-clamp-3 text-sm/relaxed">
-                  {blogpost.content}
-                </p>
-                <p className="text-sm mt-2">
-                  {blogpost.author} in {blogpost.category}
-                </p>
-                <p className="text-sm mt-1">
-                  {blogpost.date} • {blogpost.readTime} read
-                </p>
+          {articleList.map((blogpost, index) => {
+            return (
+              <div
+                key={index}
+                className="bg-[#36454F] rounded-md text-white p-6 flex justify-between"
+              >
+                <div>
+                  <h3>{blogpost.title}</h3>
+                  <p className="mt-2 line-clamp-3 text-sm/relaxed">
+                    {blogpost.content}
+                  </p>
+                  <p className="text-sm mt-2">
+                    {blogpost.author} in {blogpost.category}
+                  </p>
+                  <p className="text-sm mt-1">
+                    {blogpost.date} • {blogpost.readTime} read
+                  </p>
+                </div>
+                <div className="flex gap-2">
+                  <FilePenLine size={30} />
+                  <Trash size={30} />
+                </div>
               </div>
-              <div className="flex gap-2">
-                <FilePenLine size={30} />
-                <Trash size={30} />
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
     </div>

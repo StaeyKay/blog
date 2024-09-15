@@ -12,8 +12,6 @@ export function saveData(blogposts) {
 }
 
 const BASE_URL = "http://localhost:7000/api/v1";
-const token =
-  "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2ZGI4Y2VlOGJiM2M3NzA3OTRkMmM4YiIsImlhdCI6MTcyNjE3NzUxOSwiZXhwIjoxNzI2MTg4MzE5fQ.l4PC8Iv9WVQoYXwwGPoDN1AcA6oIIH-RWJtDIoP7n94";
 
 export async function saveUser(user) {
   const createUserResponse = await fetch(`${BASE_URL}/users/auth/register`, {
@@ -28,7 +26,40 @@ export async function saveUser(user) {
   return response;
 }
 
+export async function signinUser(user) {
+  const signinResponse = await fetch(`${BASE_URL}/users/auth/login`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(user),
+  });
+
+  const response = await signinResponse.json();
+
+  return response;
+}
+
+export async function getLoggedInUser() {
+  const token = window.localStorage.getItem("token");
+  const loggedInUserResponse = await fetch(
+    `${BASE_URL}/users/auth/loggedInUser`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        authorization: `Bearer ${token}`,
+      },
+    }
+  );
+
+  const response = await loggedInUserResponse.json();
+
+  return response;
+}
+
 export async function saveArticle(article) {
+  const token = window.localStorage.getItem("token");
   const createArticleResponse = await fetch(`${BASE_URL}/users/articles`, {
     method: "POST",
     body: article,
@@ -42,6 +73,7 @@ export async function saveArticle(article) {
 }
 
 export async function getArticles() {
+  const token = window.localStorage.getItem("token");
   const articlesResponse = await fetch(`${BASE_URL}/users/articles`, {
     method: "GET",
     headers: {
