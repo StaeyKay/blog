@@ -1,8 +1,15 @@
 import { FilePenLine, Plus, Trash, X } from "lucide-react";
 import React, { useState, useEffect } from "react";
-import { getArticles, saveArticle } from "../../../utils";
+import { getArticle, getArticles, saveArticle, updateArticle } from "../../../utils";
+import { Link, useParams } from "react-router-dom";
 
 const Blog = () => {
+  
+  const urlParams = useParams();
+
+  const blogId = urlParams.blogId
+  const updateBlog = Boolean(blogId)
+  
   const [showForm, setShowForm] = useState(false);
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
@@ -40,7 +47,20 @@ const Blog = () => {
       formData.append("readTime", readTime);
       formData.append("image", file);
 
-      const article = await saveArticle(formData);
+      
+      if (updateBlog) {
+        // Call update blog function
+        const updatedArticle = await updateArticle(blogId, formData)
+
+        // Fetch articles from the database to synchronize the front and backend
+        const articles = await getArticles()
+        setArticleList(articles)
+        toggleForm()
+       
+      } else {
+        const article = await saveArticle(formData);
+      }
+
       resetForm();
     } catch (error) {
       console.log(error);
@@ -57,6 +77,23 @@ const Blog = () => {
     };
     fetchArticles();
   }, []);
+
+  useEffect(()=> {
+    if(updateBlog) {
+      getArticle(blogId).then((response)=>{
+        console.log("Article with id:", blogId)
+        console.log("Article:", response)
+        const article = response.article
+        toggleForm();
+        setTitle(article.title);
+        setContent(article.content);
+        setAuthor(article.author);
+        setCategory(article.category);
+        setDate(article.date);
+        setReadTime(article.readTime);
+      })
+    }
+  }, [blogId])
 
   return (
     <div className="p-10 w-full">
@@ -171,8 +208,12 @@ const Blog = () => {
                   type="submit"
                   className="bg-[#33bbff] rounded-lg px-4 py-1 flex items-center gap-2 text-black"
                 >
-                  <Plus />
-                  Add Blog
+                  {
+                    updateBlog ? <FilePenLine/> : <Plus />
+                  }
+                  {
+                    updateBlog ? "Update Blog" : "Add Blog"
+                  }
                 </button>
               </form>
             </div>
@@ -200,7 +241,9 @@ const Blog = () => {
                   </p>
                 </div>
                 <div className="flex gap-2">
+                  <Link to={blogpost.id}>
                   <FilePenLine size={30} />
+                  </Link>
                   <Trash size={30} />
                 </div>
               </div>

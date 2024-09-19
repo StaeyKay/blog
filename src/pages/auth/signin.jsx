@@ -42,6 +42,8 @@ const Signin = () => {
       window.localStorage.setItem("token", token);
       window.localStorage.setItem("userId", user.id);
 
+      console.log("user:", user)
+
       // Redirect to user's personal dashboard after successful login
       if (user && user.id) {
         navigate(`/dashboard/${user.id}`);

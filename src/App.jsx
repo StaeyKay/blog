@@ -80,6 +80,10 @@ function App() {
           element: <Blog />,
         },
         {
+          path: "blogs/:blogId",
+          element: <Blog />,
+        },
+        {
           path: "categories",
           element: <DashboardCategories />,
         },
